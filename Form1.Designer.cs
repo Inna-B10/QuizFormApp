@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Quiz));
             this.btn_next = new System.Windows.Forms.Button();
             this.lbl_question = new System.Windows.Forms.Label();
             this.tb_answer = new System.Windows.Forms.TextBox();
@@ -150,6 +151,7 @@
             this.Controls.Add(this.btn_next);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ForeColor = System.Drawing.Color.DarkGreen;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Quiz";
             this.Text = "Quiz";
