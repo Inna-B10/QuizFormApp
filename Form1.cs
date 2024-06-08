@@ -49,9 +49,9 @@ namespace QuizFormApp
             lbl_mark.Text = "";
             tb_answer.Visible = false;
             btn_check.Visible = false;
-            btn_exit.Visible = false;
+            //btn_exit.Visible = false;
             btn_next.Visible = true;
-            btn_next.Text = "Begynne";
+            btn_next.Text = "Start";
         }
         private void ShowQuestion()
         {
@@ -60,6 +60,7 @@ namespace QuizFormApp
                 tb_answer.Visible = true;
                 btn_check.Visible=true;
                 btn_next.Text="Neste";
+                btn_exit.Visible = false;
             }
             if (currentQuestionIndex <= questions.Count)
             {
@@ -70,6 +71,7 @@ namespace QuizFormApp
                 btn_check.Enabled = true;
                 tb_answer.Enabled = true;
                 btn_next.Enabled = false;
+                btn_exit.Visible = false;
             }
             else
             {
@@ -133,6 +135,16 @@ namespace QuizFormApp
         {
             Application.Exit();
         }
+
+        //protected override void OnPaint(PaintEventArgs e)
+        //{
+        //    base.OnPaint(e);
+
+        //    if (backgroundImage != null)
+        //    {
+        //        e.Graphics.DrawImage(backgroundImage, this.ClientRectangle);
+        //    }
+        //}
     }
 
     public class Question
