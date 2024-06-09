@@ -45,9 +45,9 @@ namespace QuizFormApp
         private void StartQuiz()
         {
             lbl_question.Text = "Velkommen til quizen!";
-            lbl_answer.Text = string.Empty;
+            lbl_answer.Visible = false;
             lbl_mark.Text = "";
-            tb_answer.Visible = false;
+            tbox_answer.Visible = false;
             btn_check.Visible = false;
             //btn_exit.Visible = false;
             btn_next.Visible = true;
@@ -57,32 +57,35 @@ namespace QuizFormApp
         {
             if(currentQuestionIndex == 1)
             {
-                tb_answer.Visible = true;
-                btn_check.Visible=true;
-                btn_next.Text="Neste";
+                tbox_answer.Visible = true;
+                btn_check.Visible = true;
                 btn_exit.Visible = false;
+                lbl_answer.Visible = false;
+                btn_next.Text = "Neste";
             }
             if (currentQuestionIndex <= questions.Count)
             {
                 lbl_question.Text = questions[currentQuestionIndex - 1].Text;
-                tb_answer.Text = string.Empty;
-                lbl_answer.Text = string.Empty;
+                tbox_answer.Enabled = true;
+                tbox_answer.Text = string.Empty;
                 lbl_mark.Text = "";
+                lbl_answer.Visible = false;
                 btn_check.Enabled = true;
-                tb_answer.Enabled = true;
                 btn_next.Enabled = false;
                 btn_exit.Visible = false;
             }
             else
             {
-                //MessageBox.Show($"Quiz avsluttet! \n\nDitt resultat: {score} av {questions.Count}");
+                //MessageBox.Show($"Quiz avsluttet! \nDitt resultat: {score} av {questions.Count}");
                 btn_next.Visible = false;
                 btn_exit.Visible = true;
-                tb_answer.Visible = false;
+                tbox_answer.Visible = false;
                 lbl_answer.Visible = false;
                 lbl_mark.Visible = false;
                 btn_check.Visible = false;
-                lbl_question.Text = $"Quiz avsluttet! \n\nDitt resultat: {score} av {questions.Count}";
+                //lbl_question.Visible = false;
+                lbl_question.Text = $"Quiz avsluttet! \nDitt resultat: {score} av {questions.Count}";
+
             }
         }
 
@@ -96,39 +99,41 @@ namespace QuizFormApp
             currentQuestionIndex++;
             ShowQuestion();
         }
-
-        private void CheckAnswer()
-        {
-
-                if (tb_answer.Text.ToLower() == questions[currentQuestionIndex - 1].Answer.ToLower())
-                {
-                    score++;
-                    lbl_mark.Text = "Korrekt!";
-                    lbl_mark.ForeColor = Color.Green;
-                }
-                else
-                {
-                    lbl_mark.ForeColor = Color.Red;
-                    lbl_mark.Text = "Feil!";
-                    lbl_answer.Text = "Riktig svar er: " + questions[currentQuestionIndex - 1].Answer;
-                }
-            btn_next.Enabled = true;
-        }
         private void tb_answer_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
                 e.Handled = true;
                 btn_check.Enabled = false;
-                tb_answer.Enabled = false;
+                //btn_check.ForeColor = Color.CadetBlue;
+                tbox_answer.Enabled = false;
                 CheckAnswer();
             }
         }
         private void btn_check_Click(object sender, EventArgs e)
         {
             btn_check.Enabled = false;
-            tb_answer.Enabled = false;
+            //btn_check.ForeColor = Color.CadetBlue;
+            tbox_answer.Enabled = false;
             CheckAnswer();
+        }
+        private void CheckAnswer()
+        {
+
+            if (tbox_answer.Text.ToLower() == questions[currentQuestionIndex - 1].Answer.ToLower())
+            {
+                score++;
+                lbl_mark.Text = "Korrekt!";
+                lbl_mark.ForeColor = Color.PaleGoldenrod;
+            }
+            else
+            {
+                lbl_mark.ForeColor = Color.Red;
+                lbl_mark.Text = "Feil!";
+                lbl_answer.Visible = true;
+                lbl_answer.Text = "Riktig svar er: " + questions[currentQuestionIndex - 1].Answer;
+            }
+            btn_next.Enabled = true;
         }
 
         private void btn_exit_Click(object sender, EventArgs e)
