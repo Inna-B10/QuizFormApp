@@ -119,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="quiz.ico" />
+    <None Include="Resources\result.png" />
     <None Include="Resources\Window2.png" />
     <None Include="Resources\Window.png" />
     <None Include="Resources\Table_bg.png" />

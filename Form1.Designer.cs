@@ -36,10 +36,14 @@
             this.lbl_answer = new System.Windows.Forms.Label();
             this.btn_check = new System.Windows.Forms.Button();
             this.lbl_mark = new System.Windows.Forms.Label();
+            this.lbl_result = new System.Windows.Forms.Label();
+            this.picBox_result = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picBox_result)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_next
             // 
+            this.btn_next.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_next.BackColor = System.Drawing.Color.Transparent;
             this.btn_next.BackgroundImage = global::QuizFormApp.Properties.Resources.btn_active;
             this.btn_next.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -51,7 +55,7 @@
             this.btn_next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_next.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_next.ForeColor = System.Drawing.Color.PaleTurquoise;
-            this.btn_next.Location = new System.Drawing.Point(240, 439);
+            this.btn_next.Location = new System.Drawing.Point(290, 439);
             this.btn_next.Margin = new System.Windows.Forms.Padding(4);
             this.btn_next.Name = "btn_next";
             this.btn_next.Size = new System.Drawing.Size(120, 40);
@@ -63,13 +67,13 @@
             // 
             // lbl_question
             // 
-            this.lbl_question.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_question.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_question.AutoEllipsis = true;
             this.lbl_question.BackColor = System.Drawing.Color.PaleTurquoise;
             this.lbl_question.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbl_question.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.lbl_question.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lbl_question.Location = new System.Drawing.Point(135, 110);
+            this.lbl_question.Location = new System.Drawing.Point(185, 110);
             this.lbl_question.Margin = new System.Windows.Forms.Padding(5);
             this.lbl_question.Name = "lbl_question";
             this.lbl_question.Padding = new System.Windows.Forms.Padding(5);
@@ -80,12 +84,12 @@
             // 
             // tbox_answer
             // 
-            this.tbox_answer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbox_answer.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.tbox_answer.BackColor = System.Drawing.Color.PaleTurquoise;
             this.tbox_answer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbox_answer.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbox_answer.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.tbox_answer.Location = new System.Drawing.Point(135, 238);
+            this.tbox_answer.Location = new System.Drawing.Point(185, 238);
             this.tbox_answer.Margin = new System.Windows.Forms.Padding(10);
             this.tbox_answer.MinimumSize = new System.Drawing.Size(200, 35);
             this.tbox_answer.Name = "tbox_answer";
@@ -97,6 +101,7 @@
             // 
             // btn_exit
             // 
+            this.btn_exit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_exit.BackColor = System.Drawing.Color.Transparent;
             this.btn_exit.BackgroundImage = global::QuizFormApp.Properties.Resources.btn_active;
             this.btn_exit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -108,7 +113,7 @@
             this.btn_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_exit.ForeColor = System.Drawing.Color.PaleTurquoise;
-            this.btn_exit.Location = new System.Drawing.Point(240, 497);
+            this.btn_exit.Location = new System.Drawing.Point(290, 497);
             this.btn_exit.Margin = new System.Windows.Forms.Padding(4);
             this.btn_exit.Name = "btn_exit";
             this.btn_exit.Size = new System.Drawing.Size(120, 40);
@@ -120,10 +125,11 @@
             // 
             // lbl_answer
             // 
+            this.lbl_answer.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_answer.BackColor = System.Drawing.Color.PaleTurquoise;
             this.lbl_answer.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbl_answer.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lbl_answer.Location = new System.Drawing.Point(135, 358);
+            this.lbl_answer.Location = new System.Drawing.Point(185, 358);
             this.lbl_answer.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.lbl_answer.Name = "lbl_answer";
             this.lbl_answer.Padding = new System.Windows.Forms.Padding(5);
@@ -134,6 +140,7 @@
             // 
             // btn_check
             // 
+            this.btn_check.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_check.BackColor = System.Drawing.Color.Transparent;
             this.btn_check.BackgroundImage = global::QuizFormApp.Properties.Resources.btn_active;
             this.btn_check.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -144,7 +151,7 @@
             this.btn_check.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_check.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_check.ForeColor = System.Drawing.Color.PaleTurquoise;
-            this.btn_check.Location = new System.Drawing.Point(345, 238);
+            this.btn_check.Location = new System.Drawing.Point(395, 238);
             this.btn_check.Margin = new System.Windows.Forms.Padding(0);
             this.btn_check.Name = "btn_check";
             this.btn_check.Padding = new System.Windows.Forms.Padding(3);
@@ -157,10 +164,11 @@
             // 
             // lbl_mark
             // 
+            this.lbl_mark.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_mark.BackColor = System.Drawing.Color.Transparent;
             this.lbl_mark.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbl_mark.ForeColor = System.Drawing.Color.PaleGoldenrod;
-            this.lbl_mark.Location = new System.Drawing.Point(241, 326);
+            this.lbl_mark.Location = new System.Drawing.Point(291, 326);
             this.lbl_mark.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lbl_mark.Name = "lbl_mark";
             this.lbl_mark.Padding = new System.Windows.Forms.Padding(2);
@@ -170,15 +178,48 @@
             this.lbl_mark.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl_mark.ForeColorChanged += new System.EventHandler(this.btn_check_Click);
             // 
+            // lbl_result
+            // 
+            this.lbl_result.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbl_result.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_result.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_result.ForeColor = System.Drawing.Color.PaleTurquoise;
+            this.lbl_result.Image = global::QuizFormApp.Properties.Resources.result;
+            this.lbl_result.Location = new System.Drawing.Point(250, 238);
+            this.lbl_result.Margin = new System.Windows.Forms.Padding(5);
+            this.lbl_result.Name = "lbl_result";
+            this.lbl_result.Padding = new System.Windows.Forms.Padding(10);
+            this.lbl_result.Size = new System.Drawing.Size(201, 61);
+            this.lbl_result.TabIndex = 8;
+            this.lbl_result.Text = "Resultat her";
+            this.lbl_result.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lbl_result.Visible = false;
+            // 
+            // picBox_result
+            // 
+            this.picBox_result.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.picBox_result.BackColor = System.Drawing.Color.Transparent;
+            this.picBox_result.BackgroundImage = global::QuizFormApp.Properties.Resources.result;
+            this.picBox_result.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.picBox_result.Location = new System.Drawing.Point(185, 200);
+            this.picBox_result.Name = "picBox_result";
+            this.picBox_result.Size = new System.Drawing.Size(330, 137);
+            this.picBox_result.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picBox_result.TabIndex = 9;
+            this.picBox_result.TabStop = false;
+            this.picBox_result.Visible = false;
+            // 
             // Quiz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.PowderBlue;
-            this.BackgroundImage = global::QuizFormApp.Properties.Resources.bg;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(600, 600);
+            this.ClientSize = new System.Drawing.Size(701, 600);
+            this.Controls.Add(this.lbl_result);
+            this.Controls.Add(this.picBox_result);
             this.Controls.Add(this.lbl_mark);
             this.Controls.Add(this.btn_check);
             this.Controls.Add(this.lbl_answer);
@@ -199,6 +240,7 @@
             this.Text = "Quiz";
             this.TransparencyKey = System.Drawing.Color.PowderBlue;
             this.Load += new System.EventHandler(this.Quiz_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.picBox_result)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -213,6 +255,8 @@
         private System.Windows.Forms.Button btn_next;
         private System.Windows.Forms.Button btn_exit;
         private System.Windows.Forms.Label lbl_mark;
+        private System.Windows.Forms.Label lbl_result;
+        private System.Windows.Forms.PictureBox picBox_result;
     }
 }
 

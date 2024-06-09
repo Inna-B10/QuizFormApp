@@ -46,6 +46,7 @@ namespace QuizFormApp
         {
             lbl_question.Text = "Velkommen til quizen!";
             lbl_answer.Visible = false;
+            //lbl_result.Visible = false;
             lbl_mark.Text = "";
             tbox_answer.Visible = false;
             btn_check.Visible = false;
@@ -83,8 +84,12 @@ namespace QuizFormApp
                 lbl_answer.Visible = false;
                 lbl_mark.Visible = false;
                 btn_check.Visible = false;
-                //lbl_question.Visible = false;
-                lbl_question.Text = $"Quiz avsluttet! \nDitt resultat: {score} av {questions.Count}";
+                lbl_question.Visible = false;
+                
+                lbl_result.Visible = true;
+                lbl_result.Text = $"Ditt resultat: {score} av {questions.Count}";
+                picBox_result.Visible = true;
+                //lbl_question.Text = $"Quiz avsluttet! \nDitt resultat: {score} av {questions.Count}";
 
             }
         }
