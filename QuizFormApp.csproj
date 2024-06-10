@@ -94,7 +94,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
+      <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
@@ -119,9 +119,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="quiz.ico" />
-    <None Include="Resources\btn_disabled1.png" />
-    <None Include="Resources\btn_active1.png" />
-    <None Include="Resources\btn_disabled.png" />
     <None Include="Resources\result.png" />
     <None Include="Resources\Window2.png" />
     <None Include="Resources\Window.png" />
@@ -132,6 +129,7 @@
     <None Include="Resources\Table.png" />
     <None Include="Resources\Prise_BTN_Table.png" />
     <None Include="Resources\Price_BTN_Table.png" />
+    <None Include="Resources\btn_disabled.png" />
     <None Include="Resources\btn_active.png" />
     <None Include="Resources\bg.png" />
     <None Include="Resources\Table_020.png" />
@@ -148,9 +146,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="RJControls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

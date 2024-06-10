@@ -87,7 +87,7 @@ namespace QuizFormApp
                 lbl_question.Visible = false;
                 lbl_current_question.Text = "Quiz avsluttet!";
                 lbl_result.Visible = true;
-                lbl_result.Text = $"Ditt resultat:\n{score} av {questions.Count}";
+                lbl_result.Text = $"Ditt resultat: {score} av {questions.Count}";
                 picBox_result.Visible = true;
                 //lbl_question.Text = $"Quiz avsluttet! \nDitt resultat: {score} av {questions.Count}";
 
@@ -110,7 +110,6 @@ namespace QuizFormApp
             {
                 e.Handled = true;
                 btn_check.Enabled = false;
-                btn_check.BackgroundImage = Properties.Resources.btn_disabled;
                 //btn_check.ForeColor = Color.CadetBlue;
                 tbox_answer.Enabled = false;
                 CheckAnswer();
