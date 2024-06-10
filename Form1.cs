@@ -24,6 +24,7 @@ namespace QuizFormApp
 
         Bitmap btn_active = new Bitmap(@"E:\develop\C#\Projects\QuizFormApp\Resources\btn_active.png");
         Bitmap btn_disabled = new Bitmap(@"E:\develop\C#\Projects\QuizFormApp\Resources\btn_disabled.png");
+
         private void InitializeQuiz()
         {
             questions = new List<Question>
@@ -71,7 +72,7 @@ namespace QuizFormApp
             {
                 lbl_question.Text = questions[currentQuestionIndex - 1].Text;
                 tbox_answer.Enabled = true;
-                tbox_answer.Text = "";
+                tbox_answer.Text = string.Empty;
                 lbl_current_question.Visible = true;
                 lbl_current_question.Text = $"Spørsmål { currentQuestionIndex} av {questions.Count}";
                 lbl_mark.Text = "";
@@ -96,8 +97,6 @@ namespace QuizFormApp
                 lbl_result.Visible = true;
                 lbl_result.Text = $"Ditt resultat:\n{score} av {questions.Count}";
                 picBox_result.Visible = true;
-                //lbl_question.Text = $"Quiz avsluttet! \nDitt resultat: {score} av {questions.Count}";
-
             }
         }
 
@@ -131,14 +130,15 @@ namespace QuizFormApp
 
             if (tbox_answer.Text.ToLower() == questions[currentQuestionIndex - 1].Answer.ToLower())
             {
-                score++;
-                lbl_mark.Text = "Korrekt!";
+                
+                lbl_mark.Text = $"K {score}";
                 lbl_mark.ForeColor = Color.PaleGoldenrod;
+                score ++;
             }
             else
             {
                 lbl_mark.ForeColor = Color.Red;
-                lbl_mark.Text = "Feil!";
+                lbl_mark.Text = $"F {score}";
                 lbl_answer.Visible = true;
                 lbl_answer.Text = "Riktig svar er: " + questions[currentQuestionIndex - 1].Answer;
             }
