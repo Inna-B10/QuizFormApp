@@ -22,6 +22,8 @@ namespace QuizFormApp
             InitializeQuiz();
         }
 
+        Bitmap btn_active = new Bitmap(@"E:\develop\C#\Projects\QuizFormApp\Resources\btn_active.png");
+        Bitmap btn_disabled = new Bitmap(@"E:\develop\C#\Projects\QuizFormApp\Resources\btn_disabled.png");
         private void InitializeQuiz()
         {
             questions = new List<Question>
@@ -50,6 +52,7 @@ namespace QuizFormApp
             tbox_answer.Visible = false;
             btn_check.Visible = false;
             btn_next.Visible = true;
+            btn_next.BackgroundImage = btn_active;
             btn_next.Text = "Start";
         }
         private void ShowQuestion()
@@ -58,21 +61,25 @@ namespace QuizFormApp
             {
                 tbox_answer.Visible = true;
                 btn_check.Visible = true;
+                btn_check.BackgroundImage = btn_active;
                 btn_exit.Visible = false;
                 lbl_answer.Visible = false;
                 btn_next.Text = "Neste";
+                btn_next.BackgroundImage = btn_disabled;
             }
             if (currentQuestionIndex <= questions.Count)
             {
                 lbl_question.Text = questions[currentQuestionIndex - 1].Text;
                 tbox_answer.Enabled = true;
-                tbox_answer.Text = string.Empty;
+                tbox_answer.Text = "";
                 lbl_current_question.Visible = true;
                 lbl_current_question.Text = $"Spørsmål { currentQuestionIndex} av {questions.Count}";
                 lbl_mark.Text = "";
                 lbl_answer.Visible = false;
                 btn_check.Enabled = true;
+                btn_check.BackgroundImage= btn_active;
                 btn_next.Enabled = false;
+                btn_next.BackgroundImage= btn_disabled;
                 btn_exit.Visible = false;
             }
             else
@@ -87,7 +94,7 @@ namespace QuizFormApp
                 lbl_question.Visible = false;
                 lbl_current_question.Text = "Quiz avsluttet!";
                 lbl_result.Visible = true;
-                lbl_result.Text = $"Ditt resultat: {score} av {questions.Count}";
+                lbl_result.Text = $"Ditt resultat:\n{score} av {questions.Count}";
                 picBox_result.Visible = true;
                 //lbl_question.Text = $"Quiz avsluttet! \nDitt resultat: {score} av {questions.Count}";
 
@@ -109,21 +116,18 @@ namespace QuizFormApp
             if (e.KeyChar == (char)Keys.Enter)
             {
                 e.Handled = true;
-                btn_check.Enabled = false;
-                //btn_check.ForeColor = Color.CadetBlue;
-                tbox_answer.Enabled = false;
                 CheckAnswer();
             }
         }
         private void btn_check_Click(object sender, EventArgs e)
         {
-            btn_check.Enabled = false;
-            //btn_check.ForeColor = Color.CadetBlue;
-            tbox_answer.Enabled = false;
             CheckAnswer();
         }
         private void CheckAnswer()
         {
+            btn_check.Enabled = false;
+            btn_check.BackgroundImage = btn_disabled;
+            tbox_answer.Enabled = false;
 
             if (tbox_answer.Text.ToLower() == questions[currentQuestionIndex - 1].Answer.ToLower())
             {
@@ -139,22 +143,13 @@ namespace QuizFormApp
                 lbl_answer.Text = "Riktig svar er: " + questions[currentQuestionIndex - 1].Answer;
             }
             btn_next.Enabled = true;
+            btn_next.BackgroundImage = btn_active;
         }
 
         private void btn_exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
-        //protected override void OnPaint(PaintEventArgs e)
-        //{
-        //    base.OnPaint(e);
-
-        //    if (backgroundImage != null)
-        //    {
-        //        e.Graphics.DrawImage(backgroundImage, this.ClientRectangle);
-        //    }
-        //}
     }
 
     public class Question

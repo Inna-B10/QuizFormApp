@@ -46,7 +46,7 @@
             // 
             this.btn_next.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_next.BackColor = System.Drawing.Color.Transparent;
-            this.btn_next.BackgroundImage = global::QuizFormApp.Properties.Resources.btn_active;
+            this.btn_next.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_next.BackgroundImage")));
             this.btn_next.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_next.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_next.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -104,7 +104,7 @@
             // 
             this.btn_exit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_exit.BackColor = System.Drawing.Color.Transparent;
-            this.btn_exit.BackgroundImage = global::QuizFormApp.Properties.Resources.btn_active;
+            this.btn_exit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_exit.BackgroundImage")));
             this.btn_exit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_exit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_exit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -143,7 +143,7 @@
             // 
             this.btn_check.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_check.BackColor = System.Drawing.Color.Transparent;
-            this.btn_check.BackgroundImage = global::QuizFormApp.Properties.Resources.btn_active;
+            this.btn_check.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_check.BackgroundImage")));
             this.btn_check.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_check.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_check.FlatAppearance.BorderSize = 0;
@@ -183,14 +183,14 @@
             // 
             this.lbl_result.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_result.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_result.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_result.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
             this.lbl_result.ForeColor = System.Drawing.Color.PaleTurquoise;
             this.lbl_result.Image = global::QuizFormApp.Properties.Resources.result;
-            this.lbl_result.Location = new System.Drawing.Point(250, 238);
+            this.lbl_result.Location = new System.Drawing.Point(247, 235);
             this.lbl_result.Margin = new System.Windows.Forms.Padding(5);
             this.lbl_result.Name = "lbl_result";
-            this.lbl_result.Padding = new System.Windows.Forms.Padding(10);
-            this.lbl_result.Size = new System.Drawing.Size(201, 61);
+            this.lbl_result.Padding = new System.Windows.Forms.Padding(5);
+            this.lbl_result.Size = new System.Drawing.Size(203, 66);
             this.lbl_result.TabIndex = 8;
             this.lbl_result.Text = "Resultat her";
             this.lbl_result.TextAlign = System.Drawing.ContentAlignment.TopCenter;
