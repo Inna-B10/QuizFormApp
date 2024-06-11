@@ -1,5 +1,9 @@
 # QuizFormApp
-**`En enkelt quiz utformet med Windows.Forms`**
+
+```
+ En enkel quiz app, utformet med Windows.Forms  
+ app kan kjøres fra .zip mappe
+```
 
 ### Prosjektoppgave - Desktop Applikasjon
 Forsøk å implementere en desktop app, dette bør helst være en enkel console app. 
