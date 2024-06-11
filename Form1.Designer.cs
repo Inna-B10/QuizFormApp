@@ -170,7 +170,7 @@
             this.lbl_Mark.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Mark.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbl_Mark.ForeColor = System.Drawing.Color.PaleGoldenrod;
-            this.lbl_Mark.Location = new System.Drawing.Point(291, 326);
+            this.lbl_Mark.Location = new System.Drawing.Point(296, 326);
             this.lbl_Mark.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lbl_Mark.Name = "lbl_Mark";
             this.lbl_Mark.Padding = new System.Windows.Forms.Padding(2);
@@ -215,6 +215,7 @@
             // 
             this.lbl_Current_Question.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_Current_Question.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Current_Question.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbl_Current_Question.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_Current_Question.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbl_Current_Question.ForeColor = System.Drawing.Color.PaleTurquoise;
@@ -227,6 +228,7 @@
             this.lbl_Current_Question.Text = "№ spm";
             this.lbl_Current_Question.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl_Current_Question.Visible = false;
+            this.lbl_Current_Question.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_Current_Question_MouseMove);
             // 
             // Quiz
             // 

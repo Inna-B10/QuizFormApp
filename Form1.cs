@@ -125,11 +125,7 @@ namespace QuizFormApp
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                btn_Check.Enabled = false;
-                btn_Check.BackgroundImage = btn_disabled;
-                tbox_Answer.Enabled = false;
                 e.Handled = true;
-                Console.WriteLine("tb_answer_KeyPress pressed");
                 CheckAnswer();
             }
         }
@@ -138,37 +134,31 @@ namespace QuizFormApp
         //case: button Check used
         private void btn_check_Click(object sender, EventArgs e)
         {
-            btn_Check.Enabled = false;
-            btn_Check.BackgroundImage = btn_disabled;
-            tbox_Answer.Enabled = false;
-            Console.WriteLine("btn_Check Clicked");
             CheckAnswer();
         }
 
         //check the user's answer (increment score if right) and show mark
         private void CheckAnswer()
         {
-            Console.WriteLine("CheckAnswer called");
+            btn_Check.Enabled = false;
+            btn_Check.BackgroundImage = btn_disabled;
+            tbox_Answer.Enabled = false;
 
-
-
-            if (tbox_Answer.Text.ToLower() == questions[currentQuestionIndex - 1].Answer.ToLower())
+            if (tbox_Answer.Text.ToLower().Trim() == questions[currentQuestionIndex - 1].Answer.ToLower().Trim())
             {
                 
                 score++;
-                if (flag == false) {score--; flag = true;}
-                Console.WriteLine($"Correct answer, score increased to {score}");
+                if (flag == false) {score--; flag = true; } //to neutralize double CheckAnswer after previously fail answer
 
-                lbl_Mark.Text = $"K {score} {tbox_Answer.Text} {questions[currentQuestionIndex - 1].Answer}";
+                lbl_Mark.Text = "Korrekt!";
                 lbl_Mark.ForeColor = Color.PaleGoldenrod;
                 
             }
             else
             {
-                Console.WriteLine($"Incorrect answer, score remains {score}");
                 flag = false;
                 lbl_Mark.ForeColor = Color.Red;
-                lbl_Mark.Text = $"F {score} {tbox_Answer.Text} {questions[currentQuestionIndex - 1].Answer} {flag}";
+                lbl_Mark.Text = "Feil!";
                 lbl_Answer.Visible = true;
                 lbl_Answer.Text = "Riktig svar er: " + questions[currentQuestionIndex - 1].Answer;
             }
@@ -180,6 +170,15 @@ namespace QuizFormApp
         private void btn_exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void lbl_Current_Question_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Left += e.X;
+                Top += e.Y;
+}
         }
     }
 
