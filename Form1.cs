@@ -59,6 +59,7 @@ namespace QuizFormApp
         //Show welcome screen start/exit buttons
         private void LoadQuiz()
         {
+            lbl_Current_Question.Text = "";
             lbl_Question.Text = "Velkommen til quizen!";
             lbl_Answer.Visible = false;
             lbl_Mark.Text = "";
@@ -66,13 +67,20 @@ namespace QuizFormApp
             btn_Check.Visible = false;
             btn_Next.Text = "Start";
         }
+        private void lbl_Current_Question_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Left += e.X-lbl_Current_Question.Width/2;
+                Top += e.Y-lbl_Current_Question.Height/2;
+            }
+        }
 
         //Show questions
         private void ShowQuestion()
         {
             if(currentQuestionIndex == 1) //enable necessary elements
             {
-                lbl_Current_Question.Visible = true;
                 tbox_Answer.Visible = true;
                 
                 btn_Check.Visible = true;
@@ -171,16 +179,5 @@ namespace QuizFormApp
         {
             Application.Exit();
         }
-
-        private void lbl_Current_Question_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                Left += e.X;
-                Top += e.Y;
-}
-        }
     }
-
-
 }

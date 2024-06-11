@@ -227,7 +227,6 @@
             this.lbl_Current_Question.TabIndex = 10;
             this.lbl_Current_Question.Text = "№ spm";
             this.lbl_Current_Question.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbl_Current_Question.Visible = false;
             this.lbl_Current_Question.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbl_Current_Question_MouseMove);
             // 
             // Quiz
