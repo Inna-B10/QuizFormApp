@@ -258,7 +258,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quiz";
             this.TransparencyKey = System.Drawing.Color.PowderBlue;
-            this.Load += new System.EventHandler(this.Quiz_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbox_Result)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

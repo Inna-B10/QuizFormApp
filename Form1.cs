@@ -22,11 +22,12 @@ namespace QuizFormApp
             InitializeQuiz();
         }
 
-        Bitmap btn_active = new Bitmap(@"E:\develop\C#\Projects\QuizFormApp\Resources\btn_active.png");
-        Bitmap btn_disabled = new Bitmap(@"E:\develop\C#\Projects\QuizFormApp\Resources\btn_disabled.png");
+        Bitmap btn_active = new Bitmap(@"D:\develop\C#\Projects\QuizFormApp\Resources\btn_active.png");
+        Bitmap btn_disabled = new Bitmap(@"D:\develop\C#\Projects\QuizFormApp\Resources\btn_disabled.png");
 
         private void InitializeQuiz()
         {
+            //create list of questions
             questions = new List<Question>
             {
                 new Question("Hva er hovedstaden i Frankrike?", "Paris"),
@@ -42,54 +43,46 @@ namespace QuizFormApp
             };
             currentQuestionIndex = 0;
             score = 0;
-            StartQuiz();
+            LoadQuiz();
         }
 
-        private void StartQuiz()
+        //Show welcome screen start/exit buttons
+        private void LoadQuiz()
         {
             lbl_Question.Text = "Velkommen til quizen!";
             lbl_Answer.Visible = false;
             lbl_Mark.Text = "";
             tbox_Answer.Visible = false;
             btn_Check.Visible = false;
-            //btn_next.Visible = true;
-            //btn_next.BackgroundImage = btn_active;
             btn_Next.Text = "Start";
         }
+
+        //Show questions
         private void ShowQuestion()
         {
-            if(currentQuestionIndex == 1)
+            if(currentQuestionIndex == 1) //enable necessary elements
             {
                 lbl_Current_Question.Visible = true;
                 tbox_Answer.Visible = true;
+                
                 btn_Check.Visible = true;
-                //btn_check.BackgroundImage = btn_active;
-                //btn_exit.Visible = false;
-                //lbl_answer.Visible = false;
                 btn_Next.Text = "Neste";
                 btn_Next.BackgroundImage = btn_disabled;
             }
-            
-                
+                            
                 lbl_Current_Question.Text = $"Spørsmål {currentQuestionIndex} av {questions.Count}";
                 lbl_Question.Text = questions[currentQuestionIndex - 1].Text;
-                tbox_Answer.Enabled = true;
-                tbox_Answer.Text = string.Empty;
-                
                 lbl_Mark.Text = "";
                 lbl_Answer.Visible = false;
+
+                tbox_Answer.Enabled = true;
+                tbox_Answer.Text = string.Empty;
+
                 btn_Check.Enabled = true;
                 btn_Check.BackgroundImage= btn_active;
                 btn_Next.Enabled = false;
                 btn_Next.BackgroundImage= btn_disabled;
                 btn_Exit.Visible = false;
-            
-
-        }
-
-        private void Quiz_Load(object sender, EventArgs e)
-        {
-            
         }
 
         private void btn_next_Click(object sender, EventArgs e)
@@ -100,7 +93,7 @@ namespace QuizFormApp
                 ShowQuestion();
             }
 
-            else
+            else //Show result and exit button
             {
                 //MessageBox.Show($"Quiz avsluttet! \nDitt resultat: {score} av {questions.Count}");
                 btn_Next.Visible = false;
@@ -116,6 +109,8 @@ namespace QuizFormApp
                 pbox_Result.Visible = true;
             }
         }
+
+        //case: key Enter used
         private void tb_answer_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -124,10 +119,14 @@ namespace QuizFormApp
                 CheckAnswer();
             }
         }
+
+        //case: button Check used
         private void btn_check_Click(object sender, EventArgs e)
         {
             CheckAnswer();
         }
+
+        //check the user's answer (increment score if right) and show mark
         private void CheckAnswer()
         {
             btn_Check.Enabled = false;
@@ -137,14 +136,14 @@ namespace QuizFormApp
             if (tbox_Answer.Text.ToLower() == questions[currentQuestionIndex - 1].Answer.ToLower())
             {
                 
-                lbl_Mark.Text = $"K {score}";
+                lbl_Mark.Text = "Korrekt!";
                 lbl_Mark.ForeColor = Color.PaleGoldenrod;
                 score ++;
             }
             else
             {
                 lbl_Mark.ForeColor = Color.Red;
-                lbl_Mark.Text = $"F {score}";
+                lbl_Mark.Text = "Feil!";
                 lbl_Answer.Visible = true;
                 lbl_Answer.Text = "Riktig svar er: " + questions[currentQuestionIndex - 1].Answer;
             }
@@ -152,6 +151,7 @@ namespace QuizFormApp
             btn_Next.BackgroundImage = btn_active;
         }
 
+        //exit quiz
         private void btn_exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
