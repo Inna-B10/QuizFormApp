@@ -13,13 +13,25 @@ namespace QuizFormApp
     public partial class Quiz : Form
     {
         private List<Question> questions;
-        private int currentQuestionIndex;
-        private int score;
+        private int currentQuestionIndex = 0;
+        private int score = 0;
+        private bool flag = true;
 
         public Quiz()
         {
             InitializeComponent();
             InitializeQuiz();
+        }
+        public class Question
+        {
+            public string Text { get; set; }
+            public string Answer { get; set; }
+
+            public Question(string text, string answer)
+            {
+                Text = text;
+                Answer = answer;
+            }
         }
 
         Bitmap btn_active = new Bitmap(@"D:\develop\C#\Projects\QuizFormApp\Resources\btn_active.png");
@@ -41,8 +53,6 @@ namespace QuizFormApp
                 new Question("Hva heter hovedstaden i Norge?", "Oslo"),
                 new Question("Hvilken norsk by er kjent for sin brygge og fjorder?", "Bergen")
             };
-            currentQuestionIndex = 0;
-            score = 0;
             LoadQuiz();
         }
 
@@ -76,7 +86,7 @@ namespace QuizFormApp
                 lbl_Answer.Visible = false;
 
                 tbox_Answer.Enabled = true;
-                tbox_Answer.Text = string.Empty;
+                tbox_Answer.Text = "";
 
                 btn_Check.Enabled = true;
                 btn_Check.BackgroundImage= btn_active;
@@ -115,35 +125,50 @@ namespace QuizFormApp
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
+                btn_Check.Enabled = false;
+                btn_Check.BackgroundImage = btn_disabled;
+                tbox_Answer.Enabled = false;
                 e.Handled = true;
+                Console.WriteLine("tb_answer_KeyPress pressed");
                 CheckAnswer();
             }
         }
 
+
         //case: button Check used
         private void btn_check_Click(object sender, EventArgs e)
         {
+            btn_Check.Enabled = false;
+            btn_Check.BackgroundImage = btn_disabled;
+            tbox_Answer.Enabled = false;
+            Console.WriteLine("btn_Check Clicked");
             CheckAnswer();
         }
 
         //check the user's answer (increment score if right) and show mark
         private void CheckAnswer()
         {
-            btn_Check.Enabled = false;
-            btn_Check.BackgroundImage = btn_disabled;
-            tbox_Answer.Enabled = false;
+            Console.WriteLine("CheckAnswer called");
+
+
 
             if (tbox_Answer.Text.ToLower() == questions[currentQuestionIndex - 1].Answer.ToLower())
             {
                 
-                lbl_Mark.Text = "Korrekt!";
+                score++;
+                if (flag == false) {score--; flag = true;}
+                Console.WriteLine($"Correct answer, score increased to {score}");
+
+                lbl_Mark.Text = $"K {score} {tbox_Answer.Text} {questions[currentQuestionIndex - 1].Answer}";
                 lbl_Mark.ForeColor = Color.PaleGoldenrod;
-                score ++;
+                
             }
             else
             {
+                Console.WriteLine($"Incorrect answer, score remains {score}");
+                flag = false;
                 lbl_Mark.ForeColor = Color.Red;
-                lbl_Mark.Text = "Feil!";
+                lbl_Mark.Text = $"F {score} {tbox_Answer.Text} {questions[currentQuestionIndex - 1].Answer} {flag}";
                 lbl_Answer.Visible = true;
                 lbl_Answer.Text = "Riktig svar er: " + questions[currentQuestionIndex - 1].Answer;
             }
@@ -158,15 +183,5 @@ namespace QuizFormApp
         }
     }
 
-    public class Question
-    {
-        public string Text { get; }
-        public string Answer { get; }
 
-        public Question(string text, string answer)
-        {
-            Text = text;
-            Answer = answer;
-        }
-    }
 }

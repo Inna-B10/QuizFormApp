@@ -166,6 +166,7 @@
             // lbl_Mark
             // 
             this.lbl_Mark.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbl_Mark.AutoSize = true;
             this.lbl_Mark.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Mark.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbl_Mark.ForeColor = System.Drawing.Color.PaleGoldenrod;
@@ -173,7 +174,7 @@
             this.lbl_Mark.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lbl_Mark.Name = "lbl_Mark";
             this.lbl_Mark.Padding = new System.Windows.Forms.Padding(2);
-            this.lbl_Mark.Size = new System.Drawing.Size(118, 30);
+            this.lbl_Mark.Size = new System.Drawing.Size(109, 30);
             this.lbl_Mark.TabIndex = 7;
             this.lbl_Mark.Text = "Mark her";
             this.lbl_Mark.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
