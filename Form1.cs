@@ -13,17 +13,33 @@ namespace QuizFormApp
     public partial class Quiz : Form
     {
         private List<Question> questions;
-        private int currentQuestionIndex;
-        private int score;
+        private int currentQuestionIndex = 0;
+        private int score = 0;
+        private bool flag = true;
 
         public Quiz()
         {
             InitializeComponent();
             InitializeQuiz();
         }
+        public class Question
+        {
+            public string Text { get; set; }
+            public string Answer { get; set; }
+
+            public Question(string text, string answer)
+            {
+                Text = text;
+                Answer = answer;
+            }
+        }
+
+        Bitmap btn_active = new Bitmap(@"D:\develop\C#\Projects\QuizFormApp\Resources\btn_active.png");
+        Bitmap btn_disabled = new Bitmap(@"D:\develop\C#\Projects\QuizFormApp\Resources\btn_disabled.png");
 
         private void InitializeQuiz()
         {
+            //create list of questions
             questions = new List<Question>
             {
                 new Question("Hva er hovedstaden i Frankrike?", "Paris"),
@@ -37,113 +53,131 @@ namespace QuizFormApp
                 new Question("Hva heter hovedstaden i Norge?", "Oslo"),
                 new Question("Hvilken norsk by er kjent for sin brygge og fjorder?", "Bergen")
             };
-            currentQuestionIndex = 0;
-            score = 0;
-            StartQuiz();
+            LoadQuiz();
         }
 
-        private void StartQuiz()
+        //Show welcome screen start/exit buttons
+        private void LoadQuiz()
         {
-            lbl_question.Text = "Velkommen til quizen!";
-            lbl_answer.Text = string.Empty;
-            lbl_mark.Text = "";
-            tb_answer.Visible = false;
-            btn_check.Visible = false;
-            btn_exit.Visible = false;
-            btn_next.Visible = true;
-            btn_next.Text = "Begynne";
+            lbl_Current_Question.Text = "";
+            lbl_Question.Text = "Velkommen til quizen!";
+            lbl_Answer.Visible = false;
+            lbl_Mark.Text = "";
+            tbox_Answer.Visible = false;
+            btn_Check.Visible = false;
+            btn_Next.Text = "Start";
         }
+        private void lbl_Current_Question_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Left += e.X-lbl_Current_Question.Width/2;
+                Top += e.Y-lbl_Current_Question.Height/2;
+            }
+        }
+
+        //Show questions
         private void ShowQuestion()
         {
-            if(currentQuestionIndex == 1)
+            if(currentQuestionIndex == 1) //enable necessary elements
             {
-                tb_answer.Visible = true;
-                btn_check.Visible=true;
-                btn_next.Text="Neste";
+                tbox_Answer.Visible = true;
+                
+                btn_Check.Visible = true;
+                btn_Next.Text = "Neste";
+                btn_Next.BackgroundImage = btn_disabled;
             }
-            if (currentQuestionIndex <= questions.Count)
-            {
-                lbl_question.Text = questions[currentQuestionIndex - 1].Text;
-                tb_answer.Text = string.Empty;
-                lbl_answer.Text = string.Empty;
-                lbl_mark.Text = "";
-                btn_check.Enabled = true;
-                tb_answer.Enabled = true;
-                btn_next.Enabled = false;
-            }
-            else
-            {
-                //MessageBox.Show($"Quiz avsluttet! \n\nDitt resultat: {score} av {questions.Count}");
-                btn_next.Visible = false;
-                btn_exit.Visible = true;
-                tb_answer.Visible = false;
-                lbl_answer.Visible = false;
-                lbl_mark.Visible = false;
-                btn_check.Visible = false;
-                lbl_question.Text = $"Quiz avsluttet! \n\nDitt resultat: {score} av {questions.Count}";
-            }
-        }
+                            
+                lbl_Current_Question.Text = $"Spørsmål {currentQuestionIndex} av {questions.Count}";
+                lbl_Question.Text = questions[currentQuestionIndex - 1].Text;
+                lbl_Mark.Text = "";
+                lbl_Answer.Visible = false;
 
-        private void Quiz_Load(object sender, EventArgs e)
-        {
-            
+                tbox_Answer.Enabled = true;
+                tbox_Answer.Text = "";
+
+                btn_Check.Enabled = true;
+                btn_Check.BackgroundImage= btn_active;
+                btn_Next.Enabled = false;
+                btn_Next.BackgroundImage= btn_disabled;
+                btn_Exit.Visible = false;
         }
 
         private void btn_next_Click(object sender, EventArgs e)
         {
-            currentQuestionIndex++;
-            ShowQuestion();
+            if (currentQuestionIndex < questions.Count)
+            {
+                currentQuestionIndex++;
+                ShowQuestion();
+            }
+
+            else //Show result and exit button
+            {
+                //MessageBox.Show($"Quiz avsluttet! \nDitt resultat: {score} av {questions.Count}");
+                btn_Next.Visible = false;
+                btn_Exit.Visible = true;
+                tbox_Answer.Visible = false;
+                lbl_Answer.Visible = false;
+                lbl_Mark.Visible = false;
+                btn_Check.Visible = false;
+                lbl_Question.Visible = false;
+                lbl_Current_Question.Text = "Quiz avsluttet!";
+                lbl_Result.Visible = true;
+                lbl_Result.Text = $"Ditt resultat:\n{score} av {questions.Count}";
+                pbox_Result.Visible = true;
+            }
         }
 
-        private void CheckAnswer()
-        {
-
-                if (tb_answer.Text.ToLower() == questions[currentQuestionIndex - 1].Answer.ToLower())
-                {
-                    score++;
-                    lbl_mark.Text = "Korrekt!";
-                    lbl_mark.ForeColor = Color.Green;
-                }
-                else
-                {
-                    lbl_mark.ForeColor = Color.Red;
-                    lbl_mark.Text = "Feil!";
-                    lbl_answer.Text = "Riktig svar er: " + questions[currentQuestionIndex - 1].Answer;
-                }
-            btn_next.Enabled = true;
-        }
+        //case: key Enter used
         private void tb_answer_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
                 e.Handled = true;
-                btn_check.Enabled = false;
-                tb_answer.Enabled = false;
                 CheckAnswer();
             }
         }
+
+
+        //case: button Check used
         private void btn_check_Click(object sender, EventArgs e)
         {
-            btn_check.Enabled = false;
-            tb_answer.Enabled = false;
             CheckAnswer();
         }
 
+        //check the user's answer (increment score if right) and show mark
+        private void CheckAnswer()
+        {
+            btn_Check.Enabled = false;
+            btn_Check.BackgroundImage = btn_disabled;
+            tbox_Answer.Enabled = false;
+
+            if (tbox_Answer.Text.ToLower().Trim() == questions[currentQuestionIndex - 1].Answer.ToLower().Trim())
+            {
+                
+                score++;
+                if (flag == false) {score--; flag = true; } //to neutralize double CheckAnswer after previously fail answer
+
+                lbl_Mark.Text = "Korrekt!";
+                lbl_Mark.ForeColor = Color.PaleGoldenrod;
+                
+            }
+            else
+            {
+                flag = false;
+                lbl_Mark.ForeColor = Color.Red;
+                lbl_Mark.Text = "Feil!";
+                lbl_Answer.Visible = true;
+                lbl_Answer.Text = "Riktig svar er: " + questions[currentQuestionIndex - 1].Answer;
+            }
+            btn_Next.Enabled = true;
+            btn_Next.BackgroundImage = btn_active;
+        }
+
+        //exit quiz
         private void btn_exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-    }
-
-    public class Question
-    {
-        public string Text { get; }
-        public string Answer { get; }
-
-        public Question(string text, string answer)
-        {
-            Text = text;
-            Answer = answer;
         }
     }
 }

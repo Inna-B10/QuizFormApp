@@ -13,7 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>E:\develop\C#\Projects\Publish\</PublishUrl>
+    <PublishUrl>E:\test\Publish\QuizFormApp\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <PublisherName>Alekinna</PublisherName>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -95,17 +95,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -118,6 +119,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="quiz.ico" />
+    <None Include="Resources\result.png" />
+    <None Include="Resources\Window2.png" />
+    <None Include="Resources\Window.png" />
+    <None Include="Resources\Table_bg.png" />
+    <None Include="Resources\Table_03.png" />
+    <None Include="Resources\Table_02.png" />
+    <None Include="Resources\Table_01.png" />
+    <None Include="Resources\Table.png" />
+    <None Include="Resources\Prise_BTN_Table.png" />
+    <None Include="Resources\Price_BTN_Table.png" />
+    <None Include="Resources\btn_disabled.png" />
+    <None Include="Resources\btn_active.png" />
+    <None Include="Resources\bg.png" />
+    <None Include="Resources\Table_020.png" />
+    <None Include="Resources\check_dissabled.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
