@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +18,32 @@ namespace QuizFormApp
         private int score = 0;
         private bool flag = true;
 
+        Bitmap btn_disabled = Properties.Resources.btn_disabled;
+        Bitmap btn_active = Properties.Resources.btn_active;
+
+        //AS VARIANT, part1
+        //declare a variable, but not initialize it
+        //Bitmap btn_disabled;
+
         public Quiz()
         {
             InitializeComponent();
             InitializeQuiz();
+
+            //AS VARIANT, part2
+            // now initialize btn_disabled (Copy to output directory property(in Solution Explorer) of image must be copy always or copy if newer)
+        //    string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "btn_disabled.png");
+        //    if (File.Exists(imagePath))  // checking if the file exists
+        //    {
+        //        btn_disabled = new Bitmap(imagePath);
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Файл btn_disabled.png не найден!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        btn_disabled = btn_active;  // substitute a spare image
+        //    }
         }
+
         public class Question
         {
             public string Text { get; set; }
@@ -33,9 +55,6 @@ namespace QuizFormApp
                 Answer = answer;
             }
         }
-
-        Bitmap btn_active = new Bitmap(@"D:\develop\C#\Projects\QuizFormApp\Resources\btn_active.png");
-        Bitmap btn_disabled = new Bitmap(@"D:\develop\C#\Projects\QuizFormApp\Resources\btn_disabled.png");
 
         private void InitializeQuiz()
         {
